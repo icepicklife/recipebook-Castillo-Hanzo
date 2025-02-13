@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Recipe Book
+{% endblock %}
+
+{% block content %}
+    <h1>
+        Recipe Book
+    </h1>
+    <ul>
+        <a href="{{ link }}"> {{ name }} </a> 
+    </ul>
+    <ul>
+        {% for crop_fruit in ingredients %}
+        <li>
+            {{ crop_fruit.name }} - {{ crop_fruit.quantity }}
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
