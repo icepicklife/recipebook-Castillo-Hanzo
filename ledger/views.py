@@ -145,4 +145,4 @@ def index(request):
     return HttpResponse("default landing page")
     
 
-# Create your views here.
+# Create your views
