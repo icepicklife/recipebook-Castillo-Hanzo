@@ -9,10 +9,12 @@ class RecipeListView(ListView):
     model = Recipe
     template_name = 'recipe_list.html'
 
+
 class RecipeDetailView(DetailView):
 
     model = Recipe
     template_name = 'recipe_soloview.html'
+    
 
 def recipe_list(request):
 
