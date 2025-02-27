@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
 Recipe Book
 {% endblock %}
 
 {% block content %}
     <h1>
-        Recipe Book
+        {{recipe.name}}
     </h1>
     <ul>
-        <a href="{{ link }}"> {{ name }} </a> 
-    </ul>
-    <ul>
-        {% for crop_fruit in ingredients %}
+        {% for ingredient in recipe.ingredients.all %}
         <li>
-            {{ crop_fruit.name }} - {{ crop_fruit.quantity }}
+            {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
         </li>
         {% endfor %}
     </ul>
