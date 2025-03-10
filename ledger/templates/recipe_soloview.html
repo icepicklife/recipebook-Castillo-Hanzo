@@ -7,9 +7,15 @@ Recipe Book
 {% endblock %}
 
 {% block content %}
-    <h1>
+    <h2>
         {{ recipe.name }}
-    </h1>
+    </h2>
+    <em>
+        Author: {{ recipe.author }}
+    </em>
+    <p>
+        Recipe Details
+    </p>
     <ul>
         {% for ingredient in recipe.ingredients.all %}
         <li>
