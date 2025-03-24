@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Recipe Book{% endblock %}</title>
+    </head>
+
+    {% load static %}
+
+    {% block content %}
+        <h1>
+            Add Image to Recipe
+        </h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">
+                Upload Image
+            </button>
+        </form>
+        <li>
+            <a href="{% url 'ledger:recipe-detail' pk=recipe.pk %}">Back to Recipe</a>
+        </li>
+    {% endblock %}
+</html>

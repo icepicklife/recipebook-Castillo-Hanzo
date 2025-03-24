@@ -1,26 +1,47 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>
+            {% block title %}
+                Recipe Book
+            {% endblock %}
+        </title>
+    </head>
 
-{% load static %}
+    {% load static %}
 
-{% block title %}
-Recipe Book
-{% endblock %}
-
-{% block content %}
-    <h2>
-        {{ recipe.name }}
-    </h2>
-    <em>
-        Author: {{ recipe.author }}
-    </em>
-    <p>
-        Recipe Details
-    </p>
-    <ul>
-        {% for ingredient in recipe.ingredients.all %}
+    {% block content %}
+        <h2>
+            {{ recipe.name }}
+        </h2>
+        <em>
+            Author: {{ recipe.author }}
+        </em>
+        <p>
+            Recipe Details
+        </p>
+        <ul>
+            {% for ingredient in recipe.ingredients.all %}
+            <li>
+                {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
+            </li>
+            {% endfor %}
+        </ul>
+        <p>
+            {% for image in recipe.image.all %}
+                <img src="{{ image.recipe_image.url }}", alt="{{ image.description }}", width="250">
+            {% endfor %} 
+        </p>
+        <p>
+            <h3>
+                <a href="{% url 'ledger:add_recipeimage' pk=recipe.pk %}">Add Image</a>
+            </h3>
+        </p>
         <li>
-            {{ ingredient.ingredient.name }} - {{ ingredient.quantity }}
+            <a href="{% url 'ledger:recipe_list' %}">Back to List</a>
         </li>
-        {% endfor %}
-    </ul>
-{% endblock %}
+        
+    {% endblock %}
+</html>

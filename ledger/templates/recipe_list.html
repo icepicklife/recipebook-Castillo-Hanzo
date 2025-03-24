@@ -3,13 +3,18 @@
 {% load static %}
 
 {% block title %}
-    Recipe Book
+Recipe Book
 {% endblock %}
+
+{% load static %}
 
 {% block content %}
     <h2>
         Recipe List
     </h2>
+    <h3>
+        <a href="{% url 'ledger:add_recipe' %}">Add New Recipe</a>
+    </h3>
     <ul>
         {% for recipe in object_list %}
         <li>
